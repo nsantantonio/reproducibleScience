@@ -39,4 +39,10 @@ obsWR$Location <- factor(obsWR$Location, levels = unique(obsWR$Location))
 
 all(levels(obsWR$Line) == colnames(Kwr))
 
+snpInfo <- snpInfo[snpInfo$rs %in% colnames(Mwr),]
+snpInfo$chrom <- gsub("^S", "", snpInfo$chrom)
+snpCols <- data.frame(chrom = unique(snpInfo$chrom), col = rep(c("darkblue", "blue", "lightblue"), times = 7))
+snpInfo <- merge(snpInfo, snpCols, by = "chrom")
+
+
 save(obsWR, Kwr, Mwr, snpInfo, file = "SRWobs_2022_WARVA_forPMgwas.RData")
