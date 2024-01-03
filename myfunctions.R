@@ -4,15 +4,17 @@ col2hex <- function(col){
 	return(rgb(rgbval[1,], rgbval[2,], rgbval[3,], maxColorVal = 255))
 }
 
-argumentChange <- function(defaultArgs, userArgs){
-		userArgs <- list(...)
-		defaultArgs[names(userArgs)] <- userArgs
-		return(defaultArgs)
-}
 
 manhattan <- function(pvals, cumpos = FALSE, alpha = 0.05, transparent = "4D", cols = 3, ...){
+	# cols = c("firebrick", "royalblue4"); cumpos = FALSE; alpha = 0.05; transparent = "4D";
+	argumentChange <- function(defaultArgs, userArgs){
+			userArgs <- list(...)
+			defaultArgs[names(userArgs)] <- userArgs
+			return(defaultArgs)
+	}
 	if(is.null(pvals$pval) & !names(pvals)[length(pvals)] %in% c('chrom', 'pos', 'cumpos')) pvalName <- tail(names(pvals), 1) else if(!is.null(pvals$pval)) pvalName <- "pval" else stop("must provide a column labeled 'pval' with pvalues")
 	if(!all(c('chrom', 'pos') %in% names(pvals))) stop("dataframe must have columns labeled 'chrom', 'pos' and 'pval'")
+	if(!class(pvals[["pos"]]) %in% c("numeric", "integer")) stop(paste0("'pos' must be of class 'numeric' or 'integer', got class '", class(pvals[["pos"]]), "'"))
 	if(cumpos){
 		pos <- "pos"
 	} else {
@@ -26,6 +28,8 @@ manhattan <- function(pvals, cumpos = FALSE, alpha = 0.05, transparent = "4D", c
 		}
 		pos <- "cumpos"
 	}
+	labPos <- tapply(pvals[[pos]], pvals[["chrom"]], function(x) (max(x) - min(x)) / 2 + min(x))
+
 	if(is.null(pvals$col)){
 		if(is.numeric(cols) | is.integer(cols)) cols <- c("dodgerblue4", "skyblue3", "slategray4") 
 		chroms <- unique(pvals$chrom)
@@ -35,7 +39,7 @@ manhattan <- function(pvals, cumpos = FALSE, alpha = 0.05, transparent = "4D", c
 	} else {
 		if(!grepl("^\\#", pvals$col[1])) pvals$col <- col2hex(pvals$col)
 	}
-	l <- list(...)
+	# l <- list(...)
 	plotArgs <- argumentChange(list(col = pvals$col, bg = paste0(pvals$col, transparent), pch = 21, cex = 1, xaxt = "n", xlab = "Chromosome position", ylab = expression(-log[10](pvalue))), l)	
 	do.call(plot, c(list(x = pvals[[pos]], y = pvals[[pvalName]]), plotArgs))
 	# plot(pvals[[pos]], pvals$pval, col = pvals$col, bg = paste0(pvals$col, transparent), pch = 21, cex = 1, xaxt = "n")
