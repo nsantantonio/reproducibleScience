@@ -1,0 +1,54 @@
+---
+title: "My reproducible science project"
+author: 
+  - 'Virginia Barley'
+  - 'Virginia Tech, School of Plant and Environmental Science'
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+header-includes:
+- \usepackage{amsmath}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Abstract
+
+Barley is awesome!
+
+## Introduction 
+
+Something about QTL for grain yield and powdery mildew being described here and there.
+
+## Materials and Methods
+
+Blah blah blah... some number of genotypes were planted in the fall of 2021, and scored for powdery mildew in the spring of 2022...
+
+Here is where I am going to clean the data 
+```{r}
+source("cleanDataExample.R")
+```
+
+This is where I conducted the analysis 
+```{r}
+source("dataAnalysis.R")
+```
+
+
+## Results
+
+Here I will print some plots
+```{r}
+manhattan(resultList[[1]], main = traits[1])
+manhattan(resultList[[2]], main = traits[2])
+```
+
+
+## Discussion
+
+QTL for grain yield are the same as QTL for powdery mildew, suggesting yield is simply a function of how sick you got.

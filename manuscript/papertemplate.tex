@@ -1,0 +1,82 @@
+\documentclass[12pt]{article} % this defines what kind of document we want to make  
+
+\usepackage{amsmath} % basic math symbols
+\usepackage{mathtools} % allows for matrices to be built
+\usepackage{amssymb} % other useful math symbols
+\usepackage{graphicx} % for figures
+\usepackage[left]{lineno} % line numbering
+\usepackage{setspace} % for double spacing
+
+
+\usepackage{lipsum} % for generating non-sense text
+
+
+% this sets some page dimensions that mirror Word
+\textwidth=470pt
+\oddsidemargin=0pt
+\topmargin=0pt
+\headheight=0pt
+\textheight=650pt
+\headsep=0pt
+
+% include double spacing and line numbering
+\doublespacing
+\linenumbers
+
+% for citations
+\usepackage[backend=bibtex, style=authoryear]{biblatex} % for using biblatex
+\addbibresource{ref.bib}
+
+% set a title
+\title{My reproducible science project}
+
+% define authors
+\author{Virginia Barley$^1$\\
+$^1$Virginia Tech, School of Plant and Environmental Science
+}
+
+\date{\today} % set the date to today
+
+\begin{document}
+
+\maketitle % makes the title
+
+\section{Abstract} % sections are used to delineate text, e.g. Abstract Intro, M&M, Results, Discussion, etc.
+
+Barley is awesome \parencite{barley23}! 
+
+
+\section{Introduction} 
+
+\lipsum[1-3]
+
+\section{Materials and Methods} 
+
+\lipsum[4-5]
+
+\begin{equation}
+	y = \mathbf{X}\boldsymbol{\beta} + \mathbf{Zu} + \mathbf{e},
+\end{equation}
+
+\noindent where $y_i$ is the $i^\text{th}$ observation of blah blah blah...
+
+\section{Results} 
+
+\lipsum{6-7}
+Here are my results!
+
+\includegraphics[width = 7in]{"/home/nsant/Dropbox/reproducibleScience/naiveGWAS"}
+
+\lipsum[8-8} 
+
+And here is my awesome table that I dont have to ever update if I change my analysis.
+
+\include{mytable}
+
+
+\section{Discussion} 
+
+Who cares what the discussion and conclusion are, this document looks awesome!
+
+\printbibliography
+\end{document}
