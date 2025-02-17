@@ -48,13 +48,16 @@ for(i in colnames(ZM)){
 # make function to make manhattan plot
 pvals <- cbind(snpInfo, pval = pval)
 
-manhattan(pvals) # default colors
+source("myfunctions.R")
+
+manhattan(pvals) # use user defined colors in data.frame 'pvals' 
+manhattan(pvals[!names(pvals) %in% "col"]) # default colors from function
 
 # # if you are feeling particularly patriotic
-# manhattan(pvals, cols = c("firebrick", "royalblue4"))
+manhattan(pvals[!names(pvals) %in% "col"], cols = c("firebrick", "royalblue4"))
 
 # # just in case you want to be extra garish
-# manhattan(pvals, cols = c("#861F41", "#E87722", "#75787b"))
+manhattan(pvals[!names(pvals) %in% "col"], cols = c("#861F41", "#E87722", "#75787b"))
 
 # make it a pdf
 pdf("naiveGWAS.pdf", width = 14)
