@@ -8,10 +8,18 @@ if(local){
 }
 
 # read in K (additive covariance) and M (marker score) matrices
-K <- read.table(paste0(genoDataPath, "SRWaddCov2022.txt"), check.names = FALSE)
+# K <- read.table(paste0(genoDataPath, "SRWaddCov2022.txt"), check.names = FALSE)
 M <- read.table(paste0(genoDataPath, "SRWmarkersConsensus2022.txt"), check.names = FALSE)
-K <- as.matrix(K)
 M <- as.matrix(M)
+
+vanRaden1 <- function(M){
+	Z <- scale(M, scale = FALSE)
+	p <- attributes(Z)[["scaled:center"]] / 2
+	ZZt <- tcrossprod(Z)
+	ZZt / (2 * crossprod(p, 1-p)[[1]])
+}
+
+K <- vanRaden1(K)
 
 # get snp information
 snps <- colnames(M)
