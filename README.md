@@ -1,3 +1,10 @@
+# A WORK IN PROGRESS
+
+Its been a while since I first put this together and realized there were some clear problems. I intend to revamp this resource in the coming months, but for now, I put together a much simplified example for git here:
+
+[github.com/nsantantonio/exampleGit](https://github.com/nsantantonio/exampleGit)
+
+
 # Reproducible Science
 
 Welcome to my take on how one might use git and github as a way to (re)produce science. Here I will briefly present how to use several tools to build reproducible science projects. 
