@@ -1,6 +1,6 @@
 #PARENTPATH=/home/nsant/Dropbox
 #cd ${PARENTPATH}/reproducibleScience
-Rscript cleanData.R
+Rscript cleanDataExample.R
 Rscript dataAnalysis.R
 
 cd manuscript
