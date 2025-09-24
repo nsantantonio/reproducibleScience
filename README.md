@@ -5,21 +5,21 @@ Its been a while since I first put this together and realized there were some cl
 [github.com/nsantantonio/exampleGit](https://github.com/nsantantonio/exampleGit)
 
 
-# Reproducible Science
+## Reproducible Science
 
 Welcome to my take on how one might use git and github as a way to (re)produce science. Here I will briefly present how to use several tools to build reproducible science projects. 
 
-# Gold Standard
+## Gold Standard
 
 The gold standard for science, or a scientific manuscript rather, is for complete reproducability. I.e. another researcher should be able to reproduce your experiment exactly, given access to the correct starting materials. We know the outcomes will vary (vartiation due to sampling, environmental conditions, etc.), but the experimental design should be able to be replicated exactly. 
 
-# A note on spreadsheets
+## A note on spreadsheets
 
 Spreadsheets have their place. At one point in my career, I refused to use them for even the simplest tasks (I also used to use \LaTeX to make presentations, total waste of time). I now use them regularly, although I generally abstain from doing any data manipulation in them if I need that data for anything important. I encourage you to 
 
-# Multiple collaborators
+## Multiple collaborators
 
-Git has awesome features for multiple people working on the same project. However, outside of multi-person software development (arguably what git was designed for), I have found little benefit to sharing git repositories outside of simply making everything publically available and having an official public version while I tinker locally.  
+Git has awesome features for multiple people working on the same project. However, outside of multi-person software development (arguably what git was designed for), I have found little benefit to sharing git repositories outside of simply making everything publicly available and having an official public version while I tinker locally.  
 
 Internally, git can save you a lot of heartache through version control. Ever break a script and cant find the problem? You can either revert to an earlier version that worked or continue to tinker without fear that you will make things worse. 
 
@@ -54,7 +54,7 @@ If you accidentally staged a file for a commit (i.e. added it)
 
 	git reset <filename>
 
-# For the Workshop
+## For the Workshop
 
 I have put a small example together to show how a git repository can be used to make reproducible science in the form of data analysis integrated into a manuscript. This is not th eonly use for git repositories, but I think it will be the most useful for this audience, i.e. Grad students in plant sciences.
 
@@ -73,7 +73,7 @@ Please make sure to download and/or install the following:
 Please also make an account on Github here:
 - Github <https://github.com/>
 
-# Optional:
+## Optional:
 
 - Rstudio <https://posit.co/download/rstudio-desktop/>; I will not be using Rstudio, but I find many are familiar with it, so you may want to have it on your machine
 
@@ -96,6 +96,6 @@ Remember, you can google (or LLM) just about anything these days. Just ask your 
 2. <https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners>
 3. <http://www.w3schools.com/GIT/default.asp?remote=github>
 
-# Other useful links 
+## Other useful links 
 
 - The summaryTools package [github.com/nsantantonio/summaryTools] has a couple functions from making latex tables in R, names `xtable2()` and `longtable()`. You can write dataframes in R to latex tables, so that if you change your analysis, you can automatically update tables in your manuscript.
